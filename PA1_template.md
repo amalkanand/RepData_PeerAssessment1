@@ -41,10 +41,15 @@ TotalStepsPerDay <- tapply(activity$steps, activity$date, sum, na.rm=TRUE)
 ##### 1. Make a histogram of the total number of steps taken each day
 
 ```r
+png("plot1.png")
 hist(TotalStepsPerDay, xlab = "No of Steps", main = "Steps per Day")
+dev.off()
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+```
+## png 
+##   2
+```
 
 ##### 2. Calculate and report the mean and median total number of steps taken per day
 
@@ -66,13 +71,18 @@ AvgStepsTimeBlock <- aggregate(x=list(MeanSteps=activity$steps), by=list(interva
 ##### 1. Make a time series plot
 
 ```r
+png("plot2.png")
 ggplot(data=AvgStepsTimeBlock, aes(x=interval, y=MeanSteps)) +
     geom_line() +
     xlab("5-min interval") +
     ylab("Avg no of steps taken") 
+dev.off()
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+```
+## png 
+##   2
+```
 
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -116,10 +126,15 @@ ActivityDataImputed <- ActivityDataImputed[order(ActivityDataImputed$date) ,]
 
 ```r
 StepsDayImputed <- tapply(ActivityDataImputed$steps, ActivityDataImputed$date, sum)
+png("plot3.png")
 hist(StepsDayImputed, xlab = "No of Steps", main = "Steps per Day for Imputed data")
+dev.off()
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+```
+## png 
+##   2
+```
 
 ```r
 StepsMeanImputed <- mean(StepsDayImputed, na.rm = TRUE)
@@ -150,13 +165,18 @@ ActivityDataImputed$dateType <-  ifelse(as.POSIXlt(ActivityDataImputed$date)$wda
 
 ```r
 AvgActivityDataImputed <- aggregate(steps ~ interval + dateType, data=ActivityDataImputed, mean)
+png("plot4.png")
 ggplot(AvgActivityDataImputed, aes(interval, steps)) + 
     geom_line() + 
     facet_grid(dateType ~ .) +
     xlab("5-minute interval") + 
     ylab("Avg no of steps")
+dev.off()
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+```
+## png 
+##   2
+```
 
 
