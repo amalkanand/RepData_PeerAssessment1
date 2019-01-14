@@ -8,7 +8,6 @@ output:
 ```{r}
 library(ggplot2)
 library(plyr)
-library(scales)
 ```
 
 ## Loading and preprocessing the data

@@ -22,14 +22,6 @@ library(plyr)
 ## Warning: package 'plyr' was built under R version 3.4.4
 ```
 
-```r
-library(scales)
-```
-
-```
-## Warning: package 'scales' was built under R version 3.4.4
-```
-
 ## Loading and preprocessing the data
 
 ```r
